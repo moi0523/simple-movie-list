@@ -1,0 +1,20 @@
+# compiled output
+.next
+**/*/dist
+storybook-static
+
+# dependencies
+/node_modules
+
+# IDEs
+/.idea
+
+# misc
+/coverage
+yarn-error.log
+
+# generated automatically
+**/*.generated.*
+
+# env
+.env
