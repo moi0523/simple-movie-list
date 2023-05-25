@@ -1,4 +1,4 @@
-# Template Repository
+# Simple Movie List Repository
 
 # Yarn Script
 - `postinstall`

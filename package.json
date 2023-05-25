@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "next-template",
+  "name": "simple-movie-list",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
