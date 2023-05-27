@@ -1,8 +1,5 @@
 import ky from 'ky';
-import { KyInstance } from 'ky/distribution/types/ky';
-import { isString } from 'lodash';
-import { isBrowserContext } from '@helper/isBrowserContext';
-import { getSearchParams } from '@helper/getSerchParams';
+import {KyInstance} from 'ky/distribution/types/ky';
 
 type ExtendedKyInstance = {
   injectedUUID: string | null;
@@ -11,23 +8,16 @@ type ExtendedKyInstance = {
 } & KyInstance;
 
 const API = ky.create({
-  prefixUrl: process.env['NEXT_PUBLIC_API_END_POINT'],
+  prefixUrl: 'https://api.themoviedb.org/3',
   retry: 0,
   hooks: {
     beforeRequest: [
       async (request) => {
-        if (isBrowserContext() && !API.injectedAuthorization) {
-          if (isString(getSearchParams('accessToken'))) {
-            request.headers.set(
-              'Authorization',
-              `Bearer ${getSearchParams('accessToken')}`,
-            );
-          } else if (window.localStorage['accessToken']) {
-            request.headers.set(
-              'Authorization',
-              `Bearer ${window.localStorage['accessToken']}`,
-            );
-          }
+        if (!API.injectedAuthorization) {
+          request.headers.set(
+            'Authorization',
+            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NmE1NTgzY2E1MzIyYjUxMTBkMWY0MjFhZDQ4ZWE3NyIsInN1YiI6IjY0NmRmYWEzOTY2MWZjMDE1NzM2YjhhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ALIaN8brZZiDcZY3SfjD87Mt-MPt4D0zbzSFi8PA1mI',
+          );
         } else {
           request.headers.set(
             'Authorization',
