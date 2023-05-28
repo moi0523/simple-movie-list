@@ -1,5 +1,5 @@
-import {useStyletron} from 'styletron-react';
-import {ReactNode} from 'react';
+import { useStyletron } from 'styletron-react';
+import { ReactNode } from 'react';
 
 interface GridViewProps<T> {
   data: T[];

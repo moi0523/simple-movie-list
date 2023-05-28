@@ -1,18 +1,25 @@
-import {useStyletron} from 'styletron-react';
-import {useMovieListQuery} from '@hook/query/movie/useGetMovieList';
-import {InfiniteGridView} from '@component/molecules/view/infiniteGridView';
-import {MovieItemType} from '@type/movie/movieItem';
-import {MovieItem} from '@component/molecules/item/movieItem';
+import { useStyletron } from 'styletron-react';
+import { useMovieListQuery } from '@hook/query/movie/useGetMovieList';
+import { InfiniteGridView } from '@component/molecules/view/infiniteGridView';
+import { MovieItemType } from '@type/movie/movieItem';
+import { MovieItem } from '@component/molecules/item/movieItem';
+import { useEffect } from 'react';
 
 const MovieListPanel = () => {
   const [css] = useStyletron();
   const {
     data: movieListData,
-    // refetch,
-    // ,
-    // isFetching,
+    fetchNextPage,
     status,
-  } = useMovieListQuery();
+    // refetch,
+    isFetching,
+  } = useMovieListQuery({
+    refetchOnWindowFocus: false,
+  });
+
+  useEffect(() => {
+    console.log(movieListData);
+  }, [movieListData]);
 
   return (
     <article
@@ -27,6 +34,8 @@ const MovieListPanel = () => {
           columnCount={5}
           columnGap="24px"
           rowGap="32px"
+          fetchNextPage={fetchNextPage}
+          isFetching={isFetching}
           renderContent={(props, index) => (
             <MovieItem {...props} key={`movie-item-${index}`} />
           )}

@@ -1,5 +1,5 @@
 import ky from 'ky';
-import {KyInstance} from 'ky/distribution/types/ky';
+import { KyInstance } from 'ky/distribution/types/ky';
 
 type ExtendedKyInstance = {
   injectedUUID: string | null;

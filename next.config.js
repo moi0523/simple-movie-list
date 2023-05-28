@@ -1,7 +1,7 @@
 import SpriteSmithPlugin from 'webpack-spritesmith';
 import withPlugins from 'next-compose-plugins';
-import {existsSync, mkdirSync, readdirSync} from 'fs';
-import {join, resolve} from 'path';
+import { existsSync, mkdirSync, readdirSync } from 'fs';
+import { join, resolve } from 'path';
 import generated from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = generated({

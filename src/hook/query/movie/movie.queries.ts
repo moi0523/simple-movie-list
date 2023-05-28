@@ -5,6 +5,7 @@ export const MOVIE_QUERIES = {
       {
         ...MOVIE_QUERIES.SCOPE[0],
         entity: 'movie_list',
+        endPoint: 'discover/movie',
       },
     ] as const,
   MOVIE_DETAIL: () =>
