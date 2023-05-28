@@ -9,7 +9,6 @@ interface InfiniteGridViewProps<T> {
   columnGap?: string;
   rowGap?: string;
   fetchNextPage: () => Promise<{ isSuccess: boolean }>;
-  isFetching: boolean;
   renderContent: (props: T, index: number) => ReactNode;
 }
 

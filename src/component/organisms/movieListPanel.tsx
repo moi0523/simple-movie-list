@@ -11,8 +11,6 @@ const MovieListPanel = () => {
     data: movieListData,
     fetchNextPage,
     status,
-    // refetch,
-    isFetching,
   } = useMovieListQuery({
     refetchOnWindowFocus: false,
   });
@@ -35,7 +33,6 @@ const MovieListPanel = () => {
           columnGap="24px"
           rowGap="32px"
           fetchNextPage={fetchNextPage}
-          isFetching={isFetching}
           renderContent={(props, index) => (
             <MovieItem {...props} key={`movie-item-${index}`} />
           )}

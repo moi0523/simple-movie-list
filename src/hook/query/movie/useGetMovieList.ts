@@ -6,22 +6,21 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { MovieItemType } from '@type/movie/movieItem';
 
 type FetchMovieListResponse = {
-  page: number;
   results: MovieItemType[];
 };
 
-type UseQueryGeneric = {
+type UseInfiniteQueryGeneric = {
   TQueryFnData: Awaited<ReturnType<typeof fetchMovieList>>;
   TError: Error;
-  TData: UseQueryGeneric['TQueryFnData'];
-  TQueryData: UseQueryGeneric['TQueryFnData'];
+  TData: UseInfiniteQueryGeneric['TQueryFnData'];
+  TQueryData: UseInfiniteQueryGeneric['TQueryFnData'];
   TQueryKey: ReturnType<typeof MOVIE_QUERIES.MOVIE_LIST>;
 };
 
 const fetchMovieList = async ({
   pageParam = 1,
   queryKey: [{ endPoint }],
-}: QueryFunctionContext<UseQueryGeneric['TQueryKey']>) =>
+}: QueryFunctionContext<UseInfiniteQueryGeneric['TQueryKey']>) =>
   (
     await API.get(endPoint, {
       searchParams: {
@@ -31,23 +30,23 @@ const fetchMovieList = async ({
     }).json<FetchMovieListResponse>()
   ).results;
 
-const useMovieListQuery = <QueryReturnType = UseQueryGeneric['TData']>(
+const useMovieListQuery = <QueryReturnType = UseInfiniteQueryGeneric['TData']>(
   options?: Omit<
     UseInfiniteQueryOptions<
-      UseQueryGeneric['TQueryFnData'],
-      UseQueryGeneric['TError'],
+      UseInfiniteQueryGeneric['TQueryFnData'],
+      UseInfiniteQueryGeneric['TError'],
       QueryReturnType,
-      UseQueryGeneric['TQueryData'],
-      UseQueryGeneric['TQueryKey']
+      UseInfiniteQueryGeneric['TQueryData'],
+      UseInfiniteQueryGeneric['TQueryKey']
     >,
     'queryKey' | 'queryFn'
   >,
 ) =>
   useInfiniteQuery<
-    UseQueryGeneric['TQueryFnData'],
-    UseQueryGeneric['TError'],
+    UseInfiniteQueryGeneric['TQueryFnData'],
+    UseInfiniteQueryGeneric['TError'],
     QueryReturnType,
-    UseQueryGeneric['TQueryKey']
+    UseInfiniteQueryGeneric['TQueryKey']
   >(MOVIE_QUERIES.MOVIE_LIST(), fetchMovieList, {
     ...options,
     getNextPageParam: (lastPage, allPages) => {
