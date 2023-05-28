@@ -3,27 +3,11 @@ import {API} from '@service/api';
 import {UseInfiniteQueryOptions} from '@tanstack/react-query/src/types';
 import {QueryFunctionContext} from '@tanstack/query-core';
 import {useInfiniteQuery} from '@tanstack/react-query';
-
-type FetchMovieListData = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: string[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: number;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+import {MovieItemType} from '@type/movie/movieItem';
 
 type FetchMovieListResponse = {
   page: number;
-  results: FetchMovieListData[];
+  results: MovieItemType[];
 };
 
 type UseInfiniteQueryGeneric = {
@@ -65,4 +49,4 @@ const useMovieListQuery = (
   >(MOVIE_QUERIES.MOVIE_LIST(), fetchMovieList, options);
 
 export { fetchMovieList, useMovieListQuery };
-export type { FetchMovieListResponse, FetchMovieListData };
+export type { FetchMovieListResponse };

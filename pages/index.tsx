@@ -1,18 +1,18 @@
-import { GetStaticProps, NextPage } from 'next';
-import { useStyletron } from 'styletron-react';
-import { dehydrate, QueryClient } from '@tanstack/query-core';
+import {GetStaticProps, NextPage} from 'next';
+import {useStyletron} from 'styletron-react';
+import {dehydrate, QueryClient} from '@tanstack/query-core';
 import ms from 'ms';
+import {MovieListPanel} from '@component/organisms/movieListPanel';
 
 const Index: NextPage = () => {
   const [css] = useStyletron();
-
   return (
     <div
       className={css({
         display: 'flex',
       })}
     >
-      <span>asdf</span>
+      <MovieListPanel />
     </div>
   );
 };

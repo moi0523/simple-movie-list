@@ -1,7 +1,7 @@
 import SpriteSmithPlugin from 'webpack-spritesmith';
 import withPlugins from 'next-compose-plugins';
-import { existsSync, mkdirSync, readdirSync } from 'fs';
-import { join, resolve } from 'path';
+import {existsSync, mkdirSync, readdirSync} from 'fs';
+import {join, resolve} from 'path';
 import generated from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = generated({
@@ -75,7 +75,7 @@ const nextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['string'],
+    domains: ['image.tmdb.org'],
   },
   ...(!IS_DEV_MODE && {
     reactRemoveProperties: true,
