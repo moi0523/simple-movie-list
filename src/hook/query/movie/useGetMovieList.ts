@@ -30,12 +30,12 @@ const fetchMovieList = async ({
     }).json<FetchMovieListResponse>()
   ).results;
 
-const useMovieListQuery = <QueryReturnType = UseInfiniteQueryGeneric['TData']>(
+const useMovieListQuery = (
   options?: Omit<
     UseInfiniteQueryOptions<
       UseInfiniteQueryGeneric['TQueryFnData'],
       UseInfiniteQueryGeneric['TError'],
-      QueryReturnType,
+      UseInfiniteQueryGeneric['TData'],
       UseInfiniteQueryGeneric['TQueryData'],
       UseInfiniteQueryGeneric['TQueryKey']
     >,
@@ -45,7 +45,7 @@ const useMovieListQuery = <QueryReturnType = UseInfiniteQueryGeneric['TData']>(
   useInfiniteQuery<
     UseInfiniteQueryGeneric['TQueryFnData'],
     UseInfiniteQueryGeneric['TError'],
-    QueryReturnType,
+    UseInfiniteQueryGeneric['TData'],
     UseInfiniteQueryGeneric['TQueryKey']
   >(MOVIE_QUERIES.MOVIE_LIST(), fetchMovieList, {
     ...options,

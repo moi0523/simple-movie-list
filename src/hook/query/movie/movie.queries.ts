@@ -8,11 +8,12 @@ export const MOVIE_QUERIES = {
         endPoint: 'discover/movie',
       },
     ] as const,
-  MOVIE_DETAIL: () =>
+  MOVIE_DETAIL: (id: number) =>
     [
       {
         ...MOVIE_QUERIES.SCOPE[0],
         entity: 'movie_detail',
+        endPoint: `movie/${id}`,
       },
     ] as const,
   SEARCH_MOVIE: (searchKeyword: string) =>
