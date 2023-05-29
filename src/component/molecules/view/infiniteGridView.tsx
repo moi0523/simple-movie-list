@@ -33,7 +33,6 @@ const InfiniteGridView = <T extends InfiniteGridViewDefaultData>({
 
   useEffect(() => {
     if (isFetched && intersection && intersection.intersectionRatio > 0.5) {
-      console.log(1);
       (async () => {
         setIsFetched(false);
         await fetchNextPage().then((result) => {
@@ -58,7 +57,6 @@ const InfiniteGridView = <T extends InfiniteGridViewDefaultData>({
       {data?.pages?.map((page, pageIndex) => (
         <section
           key={pageIndex}
-          ref={pageIndex === data.pages.length - 1 ? intersectionRef : null}
           className={css({
             width: '100%',
             display: 'grid',
@@ -74,6 +72,16 @@ const InfiniteGridView = <T extends InfiniteGridViewDefaultData>({
           ))}
         </section>
       ))}
+      <div
+        ref={intersectionRef}
+        className={css({
+          position: 'absolute',
+          bottom: 0,
+          width: '100%',
+          height: '720px',
+          zIndex: '-1',
+        })}
+      />
     </article>
   );
 };

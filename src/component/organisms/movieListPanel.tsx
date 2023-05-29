@@ -3,7 +3,6 @@ import { useMovieListQuery } from '@hook/query/movie/useGetMovieList';
 import { InfiniteGridView } from '@component/molecules/view/infiniteGridView';
 import { MovieItemType } from '@type/movie/movieItem';
 import { MovieItem } from '@component/molecules/item/movieItem';
-import { useEffect } from 'react';
 
 const MovieListPanel = () => {
   const [css] = useStyletron();
@@ -14,10 +13,6 @@ const MovieListPanel = () => {
   } = useMovieListQuery({
     refetchOnWindowFocus: false,
   });
-
-  useEffect(() => {
-    console.log(movieListData);
-  }, [movieListData]);
 
   return (
     <article
