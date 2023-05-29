@@ -9,41 +9,75 @@
     "importHelpers": true,
     "target": "esnext",
     "module": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "resolveJsonModule": true,
-    "allowJs": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "types": ["node"],
+    "types": [
+      "node"
+    ],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "isolatedModules": true,
     "incremental": true,
     "jsx": "preserve",
-    "skipLibCheck": true,
-    "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@asset/*": ["src/asset/*"],
-      "@component/*": ["src/component/*"],
-      "@helper/*": ["src/helper/*"],
-      "@HOC/*": ["src/HOC/*"],
-      "@hook/*": ["src/hook/*"],
-      "@script/*": ["src/script/*"],
-      "@service/*": ["src/service/*"],
-      "@stories/*": ["src/stories/*"],
-      "@style/*": ["src/style/*"],
-      "@type/*": ["src/type/*"],
+      "@asset/*": [
+        "src/asset/*"
+      ],
+      "@component/*": [
+        "src/component/*"
+      ],
+      "@helper/*": [
+        "src/helper/*"
+      ],
+      "@HOC/*": [
+        "src/HOC/*"
+      ],
+      "@hook/*": [
+        "src/hook/*"
+      ],
+      "@script/*": [
+        "src/script/*"
+      ],
+      "@service/*": [
+        "src/service/*"
+      ],
+      "@stories/*": [
+        "src/stories/*"
+      ],
+      "@style/*": [
+        "src/style/*"
+      ],
+      "@type/*": [
+        "src/type/*"
+      ]
     },
+    "allowJs": true,
+    "skipLibCheck": true
   },
   "ts-node": {
     "files": true,
     "esm": true
   },
-  "include": ["src", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "**/*.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
