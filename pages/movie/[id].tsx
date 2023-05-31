@@ -4,7 +4,6 @@ import { GetStaticPropsGeneric } from '@type/staticPage';
 import ms from 'ms';
 import { useStyletron } from 'styletron-react';
 import { useGetMovieDetailQuery } from '@hook/query/movie/useGetMovieDetail';
-import { useEffect } from 'react';
 import MovieInfo from '@component/organisms/detail/movieInfo';
 import { margin } from 'polished';
 
@@ -20,10 +19,6 @@ const MovieDetail = ({ query }: MovieDetailProps) => {
   const { data, status } = useGetMovieDetailQuery(
     query.id as unknown as number,
   );
-
-  useEffect(() => {
-    console.log('data', data);
-  }, [data]);
 
   return (
     <div

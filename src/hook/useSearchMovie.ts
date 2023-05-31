@@ -18,7 +18,10 @@ const useSearchMovie = () => {
     const flatMovieList = movieList?.pages?.flat();
 
     return flatMovieList?.filter((movie) => {
-      return movie.title.includes(value);
+      return (
+        movie.title.includes(value) ||
+        movie.original_title.toLowerCase().includes(value.toLowerCase())
+      );
     });
   }, [value, movieList]);
 

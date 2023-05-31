@@ -34,25 +34,24 @@ const MovieInfo = ({
           flexDirection: 'column',
         })}
       >
-        <div>
-          <b
-            className={css({
-              fontSize: '32px',
-            })}
-          >
-            {title}
-          </b>
-          <span
-            className={css({
-              fontSize: '14px',
-              lineHeight: '21px',
-              color: '#676767',
-              marginLeft: '8px',
-            })}
-          >
-            {tagline}
-          </span>
-        </div>
+        <b
+          className={css({
+            fontSize: '32px',
+          })}
+        >
+          {title}
+        </b>
+        <span
+          className={css({
+            fontSize: '14px',
+            lineHeight: '21px',
+            color: '#676767',
+            marginBottom: '16px',
+            maxWidth: '400px',
+          })}
+        >
+          {tagline}
+        </span>
         <Genres data={genres} />
         <span
           className={css({
