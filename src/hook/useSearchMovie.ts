@@ -17,13 +17,9 @@ const useSearchMovie = () => {
 
     const flatMovieList = movieList?.pages?.flat();
 
-    const searchMovie = flatMovieList?.filter((movie) => {
+    return flatMovieList?.filter((movie) => {
       return movie.title.includes(value);
     });
-
-    console.log(searchMovie);
-
-    return searchMovie;
   }, [value, movieList]);
 
   return {

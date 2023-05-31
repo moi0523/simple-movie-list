@@ -6,12 +6,14 @@ import { MovieListPanel } from '@component/organisms/movieListPanel';
 import { MOVIE_QUERIES } from '@hook/query/movie/movie.queries';
 import { fetchMovieList } from '@hook/query/movie/useGetMovieList';
 import { margin } from 'polished';
+import { Header } from '@component/organisms/header';
 
 const Index: NextPage = () => {
   const [css] = useStyletron();
 
   return (
     <>
+      <Header />
       <div
         className={css({
           display: 'inline-block',
