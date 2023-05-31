@@ -52,6 +52,9 @@
       "@service/*": [
         "src/service/*"
       ],
+      "@store/*": [
+        "src/store/*"
+      ],
       "@stories/*": [
         "src/stories/*"
       ],
