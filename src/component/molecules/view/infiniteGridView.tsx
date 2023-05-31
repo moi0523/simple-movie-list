@@ -60,7 +60,7 @@ const InfiniteGridView = <T extends InfiniteGridViewDefaultData>({
           className={css({
             width: '100%',
             display: 'grid',
-            gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
+            gridTemplateColumns: `repeat(${columnCount}, 200px)`,
             columnGap,
             rowGap,
           })}

@@ -3,6 +3,9 @@ import { useMovieListQuery } from '@hook/query/movie/useGetMovieList';
 import { InfiniteGridView } from '@component/molecules/view/infiniteGridView';
 import { MovieItemType } from '@type/movie/movieItem';
 import { MovieItem } from '@component/molecules/item/movieItem';
+import { movieListInfoState } from '@store/movieListInfo/movieListInfoState';
+import { useEffect } from 'react';
+import { useSetRecoilState } from 'recoil';
 
 const MovieListPanel = () => {
   const [css] = useStyletron();
@@ -13,12 +16,20 @@ const MovieListPanel = () => {
   } = useMovieListQuery({
     refetchOnWindowFocus: false,
   });
+  const setMovieList = useSetRecoilState(movieListInfoState);
+
+  useEffect(() => {
+    if (movieListData) {
+      setMovieList(movieListData);
+    }
+  }, [movieListData]);
 
   return (
     <article
       className={css({
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'center',
       })}
     >
       {status === 'success' && (
