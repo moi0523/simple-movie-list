@@ -71,11 +71,10 @@ const securityHeaders = [
  */
 const nextConfig = {
   basePath: '',
-  reactStrictMode: true,
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['string'],
+    domains: ['image.tmdb.org'],
   },
   ...(!IS_DEV_MODE && {
     reactRemoveProperties: true,
