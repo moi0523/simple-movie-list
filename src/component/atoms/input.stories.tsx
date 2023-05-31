@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoriesProviderWrapper } from '@stories/ProviderWrapper';
 import { Input } from '@component/atoms/input';
@@ -29,8 +29,5 @@ InputStory.args = {
     },
   },
   disabled: false,
-  onChange: (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-  },
   placeholder: '입력해주세요.',
 };

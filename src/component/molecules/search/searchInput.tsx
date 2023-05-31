@@ -79,7 +79,7 @@ const SearchInput = () => {
               key={`${item.title}-${index}`}
               id={item.id}
               value={searchValue}
-              searchText={item.title}
+              data={item}
             />
           ))}
         </section>

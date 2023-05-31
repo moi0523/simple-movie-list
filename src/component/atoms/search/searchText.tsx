@@ -1,14 +1,17 @@
 import { useStyletron } from 'styletron-react';
 import { Link } from '@component/atoms/link';
+import { MovieItemType } from '@type/movie/movieItem';
 
 interface SearchTextProps {
   id: number;
   value: string;
-  searchText: string;
+  data: MovieItemType;
 }
 
-const SearchText = ({ id, value, searchText }: SearchTextProps) => {
+const SearchText = ({ id, value, data }: SearchTextProps) => {
   const [css] = useStyletron();
+  const isEnglish = /[a-zA-Z]/.test(value);
+  const textArray = isEnglish ? data.original_title : data.title;
 
   return (
     <div
@@ -19,24 +22,28 @@ const SearchText = ({ id, value, searchText }: SearchTextProps) => {
         color: '#333333',
       })}
     >
-      {searchText.split(value).map((text, index) => {
-        return (
-          <Link
-            key={index}
-            href={`/movie/${id}`}
-            overrides={{
-              Root: {
-                style: {
-                  display: 'block',
-                },
-              },
-            }}
-          >
-            {index !== 0 && <b>{value}</b>}
-            <span>{text}</span>
-          </Link>
-        );
-      })}
+      <Link
+        href={`/movie/${id}`}
+        overrides={{
+          Root: {
+            style: {
+              display: 'block',
+            },
+          },
+        }}
+      >
+        {textArray.split(value).map((text, index) => {
+          console.log(text, value);
+          return (
+            <>
+              {index !== 0 && (
+                <b className={css({ color: '#000000' })}>{value}</b>
+              )}
+              <span className={css({ color: '#707070' })}>{text}</span>
+            </>
+          );
+        })}
+      </Link>
     </div>
   );
 };
