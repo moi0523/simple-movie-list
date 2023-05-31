@@ -2,6 +2,7 @@ import { Link } from '@component/atoms/link';
 import { useStyletron } from 'styletron-react';
 import Image from 'next/image';
 import { MovieItemType } from '@type/movie/movieItem';
+import { createMovieImageUrl } from '@helper/createMovieImageUrl';
 
 interface MovieItemProps extends MovieItemType {
   test?: number;
@@ -45,12 +46,12 @@ const MovieItem = ({
           })}
         >
           <Image
-            src={`https://image.tmdb.org/t/p/w200/${poster_path}`}
+            src={createMovieImageUrl(poster_path, 200)}
             alt={`${title} 포스터`}
             width={200}
             height={300}
             placeholder="blur"
-            blurDataURL={`https://image.tmdb.org/t/p/w92/${poster_path}`}
+            blurDataURL={createMovieImageUrl(poster_path, 92)}
           />
         </div>
         <b

@@ -5,6 +5,8 @@ import ms from 'ms';
 import { useStyletron } from 'styletron-react';
 import { useGetMovieDetailQuery } from '@hook/query/movie/useGetMovieDetail';
 import { useEffect } from 'react';
+import MovieInfo from '@component/organisms/detail/movieInfo';
+import { margin } from 'polished';
 
 type Params = 'id';
 type Query = Record<Params, string>;
@@ -15,22 +17,23 @@ interface MovieDetailProps {
 
 const MovieDetail = ({ query }: MovieDetailProps) => {
   const [css] = useStyletron();
-  const { data } = useGetMovieDetailQuery(query.id as unknown as number);
+  const { data, status } = useGetMovieDetailQuery(
+    query.id as unknown as number,
+  );
 
   useEffect(() => {
     console.log('data', data);
   }, [data]);
 
   return (
-    <>
-      <span
-        className={css({
-          fontSize: '24px',
-        })}
-      >
-        asdf
-      </span>
-    </>
+    <div
+      className={css({
+        display: 'inline-block',
+        ...margin('60px', 'auto'),
+      })}
+    >
+      {status === 'success' && <MovieInfo {...data} />}
+    </div>
   );
 };
 
